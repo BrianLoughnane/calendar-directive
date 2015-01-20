@@ -1,0 +1,7 @@
+<!-- directive template here -->
+
+<div class='row' ng-repeat="week in weeksThisMonth">
+	<span class='square' ng-repeat="day in week" ng-class="{delineated: day.delineate}">
+		<span>{{ day.day }}</span>
+	</span>
+</div>

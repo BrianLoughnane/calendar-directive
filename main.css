@@ -1,0 +1,61 @@
+/* your css code goes here */
+html, body {
+	height: 100%;
+}
+
+.nav-bar-directive {
+	height: 100%;
+	display: inline-block;
+	width: 100%;
+}
+
+nav {
+	margin: 1%;
+	padding: 1%;
+	border-radius: 5px;
+	background: black;
+}
+
+nav span {
+	float: right;
+	color: white;
+	margin-right: 2%;
+	display: inline-block;
+}
+
+nav span:hover {
+	cursor: pointer;
+	color: darkorange;
+}
+
+.calendar {
+	height: 90%;
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+}
+
+.row {
+	height: 18%;
+	text-align: center;
+}
+
+.square {
+	display: inline-block;
+	vertical-align: middle;
+	width: 14%;
+	box-shadow: 0px 0px 3px darkblue;
+	height: 100%;
+	text-align: left;
+}
+
+.square span {
+	display: inline-block;
+	padding: 9%;
+}
+
+.delineated {
+	background: lightgray;
+	/*opacity: 0.6;*/
+
+}
