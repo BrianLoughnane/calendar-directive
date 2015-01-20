@@ -1,9 +1,9 @@
 <div class="nav-bar-directive">
 	<nav>
-		<select name="month" ng-model="dateSelection.month" ng-change="update()">
+		<select class="month-dropdown" name="month" ng-model="dateSelection.month" ng-change="update()">
 			<option ng-repeat="month in range.months" ng-selected="month === currentMonthName">{{ month }}</option>
 		</select>
-		<select name="year" ng-model="dateSelection.year" ng-change="update()">
+		<select class="year-dropdown" name="year" ng-model="dateSelection.year" ng-change="update()">
 			<option ng-repeat="year in range.years" ng-selected="year === currentYear">{{ year }}</option>
 		</select>
 		<span class="next" ng-click="toNextMonth()">Next</span>
