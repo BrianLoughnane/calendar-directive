@@ -168,6 +168,13 @@ angular.module('calendarDemoApp', [])
 			require: '^navBar',
 			restrict: 'E',
 			templateUrl: 'calendar-directive-template.html'
+			// ,
+			// link: function(s,e,a) {
+			// 	var h = 100/s.weeksThisMonth.length;
+			// 	var hString = String(h) + '%';
+			// 	e.find('.row').css('height', hString);
+			// 	// debugger
+			// }
 		}
 	});
 

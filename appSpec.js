@@ -197,6 +197,56 @@ describe('navBar', function() {
 		expect(element.find('.month-dropdown').find('option').length).toEqual(12);
 		expect(element.find('.year-dropdown').find('option').length).toEqual(41);
 	});
+
+	it('should expose a controller', function() {
+		ctrl = element.data('$navBarController');		
+		expect(ctrl).toBeDefined();
+	});
+
+	it('the controller should set different scope variables', function() {
+		var wtm = scope.weeksThisMonth;
+		expect(wtm).toBeDefined();
+		expect(Array.isArray(wtm)).toEqual(true);
+
+		var cy = scope.currentYear;
+		expect(cy).toBeDefined();
+		expect(typeof cy).toEqual('number');
+		expect(cy).toBeGreaterThan(2014);
+
+		var cmn = scope.currentMonthName;
+		expect(cmn).toBeDefined();
+		expect(months).toContain(cmn);
+
+		var r = scope.range;
+		expect(typeof r).toEqual('object');
+		expect(r.months).toBeDefined();
+		expect(r.years).toBeDefined();
+
+		var ds = scope.dateSelection;
+		expect(typeof ds).toEqual('object');
+		expect(ds.month).toBeDefined();
+		expect(ds.year).toBeDefined();
+	});
+
+	it('the controller should be able to update the month displayed', function() {
+		scope.dateSelection.year = 2020;
+		scope.dateSelection.month = 'March';
+		scope.update();
+		expect(scope.weeksThisMonth[0][0].day).toEqual(1);
+	});
+
+	it('controller should be able to go to next and previous months', function() {
+		scope.dateSelection.year = 1999;
+		scope.dateSelection.month = 'December';
+
+		scope.toNextMonth();
+		expect(scope.dateSelection.year).toEqual(2000);
+		expect(scope.dateSelection.month).toEqual('January');
+
+		scope.toPrevMonth();
+		expect(scope.dateSelection.year).toEqual(1999);
+		expect(scope.dateSelection.month).toEqual('December');		
+	});
 });
 
 
@@ -204,6 +254,7 @@ describe('calendar', function() {
 	var scope, element, compiled, html;
 
 	beforeEach(module('calendarDemoApp'));
+	// beforeEach(module('nav-bar.html'));
 	beforeEach(module('calendar-directive-template.html'));
 	beforeEach(inject(function($rootScope, $compile, getWeeksForDateOf) {
 		html = '<calendar></calendar>';
@@ -218,9 +269,11 @@ describe('calendar', function() {
 		expect(element.find('.row').length).toBeGreaterThan(3);
 		expect(element.find('.square').length).toBeGreaterThan(21);
 	});
+
+	it('should be able to access the navBar control and scope', function() {
+		expect(scope.weeksThisMonth).toBeDefined();
+	});
 });
-
-
 
 
 
